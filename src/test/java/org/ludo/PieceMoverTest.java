@@ -17,10 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PieceMoverTest {
     PieceMover pieceMover;
     Piece piece1;
-    Piece piece2;
-    Piece piece3;
-    Piece piece4;
-
     ArrayList<Player> players = new ArrayList<>();
 
     @BeforeEach
@@ -31,12 +27,8 @@ public class PieceMoverTest {
             players.add(player);
         }
 
-        piece1 = players.get(0).getPieces().get(0);
-        piece2 = players.get(1).getPieces().get(0);
-        piece3 = players.get(2).getPieces().get(0);
-        piece4 = players.get(3).getPieces().get(0);
-
-        pieceMover = new PieceMover(players);
+        this.piece1 = players.get(0).getPieces().get(0);
+        this.pieceMover = new PieceMover(players);
     }
 
    private interface PieceModifier {
@@ -59,8 +51,8 @@ public class PieceMoverTest {
         assertEquals(Areas.YARD, piece1.getBoardArea());
 
         //if player gets 6, should move out to gametrack
-        applyToPieces(piece -> pieceMover.move(piece1, 6));
-        applyToPieces(piece -> assertEquals(Areas.GAMETRACK, piece1.getBoardArea()));
+        applyToPieces(piece -> pieceMover.move(piece, 6));
+        applyToPieces(piece -> assertEquals(Areas.GAMETRACK, piece.getBoardArea()));
 
 
 
@@ -110,7 +102,6 @@ public class PieceMoverTest {
 
         players.get(0).getPieces().forEach(piece -> piece.setPosIndex(51));
 
-        players.forEach(System.out::println);
         applyToPieces(piece -> {
             //moving each peace 4 forward, should enter home column with 4
             pieceMover.move(piece, 4);
@@ -146,6 +137,7 @@ public class PieceMoverTest {
     }
 
     @Test
+    @DisplayName("Landing on another piece")
     public void testLandingOnPiece() {
         applyToPieces(piece -> {
            piece.setBoardArea(Areas.GAMETRACK);
