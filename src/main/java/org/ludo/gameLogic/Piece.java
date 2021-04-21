@@ -1,8 +1,5 @@
 package org.ludo.gameLogic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Piece {
   //doesn't change
   private final int colorIndex;

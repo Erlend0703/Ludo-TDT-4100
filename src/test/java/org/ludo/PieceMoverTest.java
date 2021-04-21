@@ -4,12 +4,14 @@ package org.ludo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.ludo.gameLogic.*;
+import org.ludo.gameLogic.Areas;
+import org.ludo.gameLogic.Piece;
+import org.ludo.gameLogic.PieceMover;
+import org.ludo.gameLogic.Player;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class PieceMoverTest {
@@ -59,7 +61,6 @@ public class PieceMoverTest {
         //if player gets 6, should move out to gametrack
         applyToPieces(piece -> pieceMover.move(piece1, 6));
         applyToPieces(piece -> assertEquals(Areas.GAMETRACK, piece1.getBoardArea()));
-
 
 
 

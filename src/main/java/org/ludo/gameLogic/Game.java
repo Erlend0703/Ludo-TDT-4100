@@ -3,11 +3,12 @@ package org.ludo.gameLogic;
 import org.ludo.gameRendering.DieAnimator;
 import org.ludo.gameRendering.GameRenderer;
 import org.ludo.utils.gameSaving.LudoSaveHandler;
-import org.ludo.utils.gameSaving.SerializedGameState;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Game {
@@ -25,8 +26,8 @@ public class Game {
 
     //inits to default values, but can be changed here later if layout changes instead of changing values scattered around
     private final int scale = 25;
-    private final int boardLayoutX = 50;
-    private final int boardLayoutY = 100;
+    private final int boardLayoutY = 50;
+    private final int boardLayoutX = 100;
 
     public void initState(String[] colorOrder, String... playerNames) {
         this.colorOrder = colorOrder;
@@ -55,7 +56,7 @@ public class Game {
     }
 
     public void start() {
-        boardPositions = new BoardPositions(scale, boardLayoutX, boardLayoutY);
+        boardPositions = new BoardPositions(scale, boardLayoutY, boardLayoutX);
         pieceMover = new PieceMover(players);
         gameRenderer.indicatePlayerTurn();
         gameRenderer.renderPieces();
