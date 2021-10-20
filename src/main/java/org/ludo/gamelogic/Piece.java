@@ -7,19 +7,19 @@ public class Piece {
 
   //desides its position on the board
   private int posIndex;
-  private Areas boardArea;
+  private org.ludo.gamelogic.Areas boardArea;
 
   //renders the piece
-  private PieceNode pieceNode;
+  private org.ludo.gamelogic.PieceNode pieceNode;
 
   public Piece(int colorIndex, int initialPosIndex) {
     this.colorIndex = colorIndex;
     this.initialPosIndex = initialPosIndex;
     this.posIndex = initialPosIndex;
-    setBoardArea(Areas.YARD);
+    setBoardArea(YARD);
   }
 
-  public Piece(int colorIndex, int initialPosIndex, int posIndex, Areas boardArea) {
+  public Piece(int colorIndex, int initialPosIndex, int posIndex, org.ludo.gamelogic.Areas boardArea) {
     this.colorIndex = colorIndex;
     this.initialPosIndex = initialPosIndex;
     this.posIndex = posIndex;
@@ -35,7 +35,7 @@ public class Piece {
     this.posIndex = posIndex;
   }
 
-  public void setBoardArea(Areas boardArea) {
+  public void setBoardArea(org.ludo.gamelogic.Areas boardArea) {
     this.boardArea = boardArea;
   }
 
